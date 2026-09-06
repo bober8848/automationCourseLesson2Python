@@ -1,13 +1,5 @@
 import pytest
 
-@pytest.fixture(scope="session")
-def browser():
-    print("\nBrowser started")
-
-    yield
-
-    print("\nClosing browser")
-
 
 @pytest.fixture
 def login_page(browser):
