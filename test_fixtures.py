@@ -1,6 +1,6 @@
 import pytest
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def browser():
     print("\nBrowser started")
 
@@ -20,9 +20,15 @@ def user_creds():
     return "username", "password"
 
 
-
 def test_login(login_page, user_creds):
     username, password = user_creds
     assert username == "username"
     assert password == "password"
+    print("\nUser logged in")
 
+
+def test_logout(login_page, user_creds):
+    username, password = user_creds
+    assert username == "username"
+    assert password == "password"
+    print("\nUser logged out")
