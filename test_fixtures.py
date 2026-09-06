@@ -2,7 +2,7 @@ import pytest
 
 
 @pytest.fixture
-def login_page(browser):
+def login_page(setup_browser):
     print("\nLogin page opened")
 
 
