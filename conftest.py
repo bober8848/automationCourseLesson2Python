@@ -1,6 +1,10 @@
 import pytest
+import undetected_chromedriver as uc
 from selene import browser, be, have
 import time
+
+
+browser.config.driver_manager_enabled = False
 
 
 @pytest.fixture(scope="session")
@@ -14,12 +18,13 @@ def fake_browser():
 
 @pytest.fixture(scope="session")
 def setup_browser():
-    browser.config.window_width = 1600
-    browser.config.window_height = 900
+    options = uc.ChromeOptions()
+    options.add_argument("--window-size=1200,800")
 
-    _ = browser.driver
-    time.sleep(2)
+    driver = uc.Chrome(options=options)
+
+    browser.config.driver = driver
 
     yield
 
-    browser.quit()
+    driver.quit()

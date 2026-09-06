@@ -1,4 +1,6 @@
 pytest
 requests
 selene==2.0.0rc4
+undetected_chromedriver>=3.5.5
+setuptools
 
